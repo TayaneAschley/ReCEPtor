@@ -3,4 +3,4 @@ import { Router } from "express";
 
 export const router = Router();
 
-router.get("/ReCEPtor", cepController);
+router.get("/ReCEPtor/:cep", cepController);

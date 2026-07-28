@@ -1,7 +1,7 @@
 import { cepService } from "../service/cepService.js";
 
 export async function cepController(req, res) {
-  const { CEP } = req.body;
+  const { CEP } = req.params;
 
   const result = await cepService(CEP);
 
