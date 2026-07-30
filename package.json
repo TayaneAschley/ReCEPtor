@@ -8,13 +8,20 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "node --watch backend/src/server.js"
+    "dev": "node --watch backend/src/server.js",
+    "start": "node backend/src/server.js",
+    "test": "node --test backend/src/service/cepService.test.js"
   },
   "name": "receptor",
-  "description": "This is a project set up by [Confectus](https://www.npmjs.com/package/confectus).",
-  "version": "1.0.0",
+  "description": "Aplicação web para consulta de endereços por CEP usando uma API pública e uma interface simples.",
+  "version": "1.1.0",
   "main": "index.js",
-  "keywords": [],
+  "keywords": [
+    "cep",
+    "express",
+    "frontend",
+    "api"
+  ],
   "author": "",
   "license": "ISC"
 }
