@@ -1,21 +1,30 @@
 import { fetchApi } from "../providers/cepProvider.js";
 
 export async function cepService(CEP) {
-  if (!CEP) {
+  const cep = CEP?.trim() ?? "";
+
+  if (!cep) {
     return {
       success: false,
-      message: "CEP is required",
+      message: "CEP é obrigatório.",
     };
   }
 
-  if (isNaN(Number(CEP))) {
+  if (!/^\d+$/.test(cep)) {
     return {
       success: false,
-      message: "CEP must contain only numbers",
+      message: "CEP deve conter apenas números.",
     };
   }
 
-  const result = await fetchApi(CEP);
+  if (cep.length !== 8) {
+    return {
+      success: false,
+      message: "CEP deve conter exatamente 8 dígitos.",
+    };
+  }
+
+  const result = await fetchApi(cep);
   if (!result.success) {
     return {
       success: false,
@@ -23,15 +32,15 @@ export async function cepService(CEP) {
     };
   }
 
-  const { cep, street, city, state } = result.content;
+  const { cep: cepApi, street, city, state } = result.content;
 
   return {
     success: true,
     content: {
-      cep: cep,
+      cep: cepApi || cep,
       rua: street || "Não informada",
-      cidade: city,
-      estado: state,
+      cidade: city || "Não informada",
+      estado: state || "Não informado",
     },
   };
 }
