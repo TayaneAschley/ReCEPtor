@@ -12,7 +12,7 @@ export async function fetchApi(CEP) {
       };
     }
     const result = await response.json();
-    return { success: true, content: result.cep };
+    return { success: true, content: result };
   } catch (error) {
     console.error("Erro no provider:", error.message);
     return {

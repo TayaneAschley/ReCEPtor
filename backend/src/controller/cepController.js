@@ -1,9 +1,9 @@
 import { cepService } from "../service/cepService.js";
 
 export async function cepController(req, res) {
-  const { CEP } = req.params;
+  const { cep } = req.params;
 
-  const result = await cepService(CEP);
+  const result = await cepService(cep);
 
   if (result.success === false) {
     return res.status(400).json({
